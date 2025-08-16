@@ -1,7 +1,10 @@
 import styles from "./App.module.scss";
+import SearchBase from "./components/SearchBase";
 
-function App() {
-  return <></>;
+export default function App() {
+  return (
+    <>
+      <SearchBase />
+    </>
+  );
 }
-
-export default App;
