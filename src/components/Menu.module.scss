@@ -1,0 +1,12 @@
+.menu {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  top: 0;
+  width: 97px;
+  height: 100vh;
+  background: #002137;
+  z-index: 1;
+  padding: 82px 0 0 0;
+}
