@@ -1,15 +1,26 @@
 .chapter {
   display: flex;
   flex-direction: column;
+  gap: 8px;
   justify-content: center;
   align-items: center;
+  width: 97px;
+  height: 73px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #002c49;
+  }
   .icon {
     background-position: center;
-    background-size: 19px;
+    background-size: cover;
     background-repeat: no-repeat;
-    background-color: #ffffff;
-    width: 19px;
-    height: 19px;
-    right: calc(43px / 2.5);
+  }
+  .name {
+    text-align: center;
+    color: #ffffff;
+    font-size: 12px;
+    margin: 0;
+    font-weight: normal;
   }
 }

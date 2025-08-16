@@ -12,7 +12,13 @@ export default function Menu() {
   return (
     <nav className={styles.menu}>
       {chapters.map((chapter) => (
-        <Chapter path={chapter.path} name={chapter.name} />
+        <Chapter
+          icon={chapter.icon}
+          width={chapter.width}
+          height={chapter.height}
+          path={chapter.path}
+          name={chapter.name}
+        />
       ))}
     </nav>
   );
