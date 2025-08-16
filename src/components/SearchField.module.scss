@@ -1,2 +1,34 @@
 .search {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 683px;
+  height: 43px;
+  box-sizing: border-box;
+
+  .search_input {
+    border-radius: calc(43px / 2);
+    border: solid 1px #a9b2c9;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    padding: 12px calc(43px / 2.5);
+    box-sizing: border-box;
+    &::placeholder {
+      color: #a9b2c9;
+    }
+  }
+
+  .search_icon {
+    position: absolute;
+    background-position: center;
+    background-image: url(/src/components/search.png);
+    background-size: 19px;
+    background-repeat: no-repeat;
+    background-color: #ffffff;
+    width: 19px;
+    height: 19px;
+    right: calc(43px / 2.5);
+  }
 }
