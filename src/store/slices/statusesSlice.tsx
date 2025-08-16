@@ -2,13 +2,11 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { url, tenantguid } from "../configureStore";
 
-export const getTasks = createAsyncThunk(
-  "tasks/getTasks",
+export const getStatuses = createAsyncThunk(
+  "statuses/getStatuses",
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get(
-        `${url}/odata/tasks?tenantguid=${tenantguid}`
-      );
+      const response = await axios.get(`${url}/api/${tenantguid}/Statuses`);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -16,29 +14,29 @@ export const getTasks = createAsyncThunk(
   }
 );
 
-const tasksSlice = createSlice({
-  name: "tasks",
+const statusesSlice = createSlice({
+  name: "statuses",
   initialState: {
     loading: false,
-    tasks: {},
+    statuses: {},
     error: null,
   },
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getTasks.pending, (state) => {
+      .addCase(getStatuses.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(getTasks.fulfilled, (state, action) => {
+      .addCase(getStatuses.fulfilled, (state, action) => {
         state.loading = false;
-        state.tasks = action.payload;
+        state.statuses = action.payload;
       })
-      .addCase(getTasks.rejected, (state, action) => {
+      .addCase(getStatuses.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });
   },
 });
 
-export default tasksSlice.reducer;
+export default statusesSlice.reducer;
