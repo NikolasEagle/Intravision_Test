@@ -1,7 +1,23 @@
 .base {
+  display: flex;
+  align-items: center;
   min-width: 100vw;
   width: 100%;
   height: auto;
   background: #d1e0ed;
   padding: 12px 107px 12px 107px;
+
+  .logo {
+    position: absolute;
+    background-position: center;
+    background-image: url(/src/components/logo.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 52px;
+    height: 44px;
+    left: 26px;
+    top: 16px;
+    bottom: 5px;
+    z-index: 10;
+  }
 }
