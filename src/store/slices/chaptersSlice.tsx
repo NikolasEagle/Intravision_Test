@@ -10,6 +10,7 @@ const chaptersSlice = createSlice({
         height: "26px",
         path: "/knowledge_base",
         name: "База знаний",
+        active: false,
       },
       {
         icon: "url(/src/components/tasks.png)",
@@ -17,6 +18,7 @@ const chaptersSlice = createSlice({
         height: "24px",
         path: "/tasks",
         name: "Заявки",
+        active: false,
       },
       {
         icon: "url(/src/components/employees.png)",
@@ -24,6 +26,7 @@ const chaptersSlice = createSlice({
         height: "17px",
         path: "/employees",
         name: "Сотрудники",
+        active: false,
       },
       {
         icon: "url(/src/components/clients.png)",
@@ -31,6 +34,7 @@ const chaptersSlice = createSlice({
         height: "26px",
         path: "/clients",
         name: "Клиенты",
+        active: false,
       },
       {
         icon: "url(/src/components/assets.png)",
@@ -38,6 +42,7 @@ const chaptersSlice = createSlice({
         height: "24px",
         path: "/assets",
         name: "Активы",
+        active: false,
       },
       {
         icon: "url(/src/components/settings.png)",
@@ -45,6 +50,7 @@ const chaptersSlice = createSlice({
         height: "24px",
         path: "/settings",
         name: "Настройки",
+        active: false,
       },
     ],
   },

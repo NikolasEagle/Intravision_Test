@@ -17,12 +17,19 @@ export default function Chapter({
   name,
   active,
 }: Props) {
-  console.log(icon);
   return (
-    <a className={styles.chapter} href={path}>
+    <a
+      className={styles.chapter}
+      href={path}
+      style={{ backgroundColor: active ? "#002c49" : "none" }}
+    >
       <div
         className={styles.icon}
-        style={{ backgroundImage: icon, width: width, height: height }}
+        style={{
+          backgroundImage: icon,
+          width: width,
+          height: height,
+        }}
       ></div>
       <p className={styles.name}>{name}</p>
     </a>
