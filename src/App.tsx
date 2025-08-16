@@ -3,6 +3,7 @@ import "./App.module.scss";
 import Menu from "./components/Menu";
 import SearchBase from "./components/SearchBase";
 import { useEffect } from "react";
+import Main from "./components/Main";
 
 export default function App() {
   const navigate = useNavigate();
@@ -22,6 +23,7 @@ export default function App() {
           <>
             <SearchBase />
             <Menu />
+            <Main />
           </>
         }
       />
