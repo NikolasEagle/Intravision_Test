@@ -1,12 +1,20 @@
-import styles from "./App.module.scss";
+import { Route, Routes } from "react-router-dom";
+import "./App.module.scss";
 import Menu from "./components/Menu";
 import SearchBase from "./components/SearchBase";
 
 export default function App() {
   return (
-    <>
-      <SearchBase />
-      <Menu />
-    </>
+    <Routes>
+      <Route
+        path="*"
+        element={
+          <>
+            <SearchBase />
+            <Menu />
+          </>
+        }
+      />
+    </Routes>
   );
 }
