@@ -1,0 +1,15 @@
+.chapter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .icon {
+    background-position: center;
+    background-size: 19px;
+    background-repeat: no-repeat;
+    background-color: #ffffff;
+    width: 19px;
+    height: 19px;
+    right: calc(43px / 2.5);
+  }
+}
