@@ -23,7 +23,7 @@ const tasksSlice = createSlice({
   name: "tasks",
   initialState: {
     loading: false,
-    tasks: [],
+    tasks: {},
     error: null,
   },
   reducers: {},
@@ -34,7 +34,7 @@ const tasksSlice = createSlice({
         state.error = null;
       })
       .addCase(getTasks.fulfilled, (state, action) => {
-        state.loading = true;
+        state.loading = false;
         state.tasks = action.payload;
       })
       .addCase(getTasks.rejected, (state, action) => {
