@@ -1,2 +1,19 @@
 .createTaskBase {
+  height: 90px;
+  width: 100%;
+  padding: 25px 0 25px 262px;
+  box-sizing: border-box;
+  .create {
+    cursor: pointer;
+    height: 40px;
+    width: 180px;
+    border-radius: calc(40px / 2);
+    background: #008cf0;
+    outline: none;
+    border: none;
+    color: #ffffff;
+    &:hover {
+      background: #3796f8;
+    }
+  }
 }
