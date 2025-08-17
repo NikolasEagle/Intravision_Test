@@ -1,10 +1,13 @@
 .tasks {
   border-collapse: collapse;
   width: 830px;
+  position: absolute;
+  top: 90px;
   .header {
     height: calc(12px + 17px * 2);
     align-items: center;
     border-bottom: 1px solid #e2e7ea;
+
     td {
       align-items: center;
       position: relative;
@@ -27,6 +30,9 @@
     .executor {
       text-indent: 0px;
       text-align: center;
+    }
+    .executor,
+    .priority {
       &::after {
         content: "";
         position: absolute;
@@ -36,6 +42,10 @@
         height: 22px;
         border-right: none;
       }
+    }
+    .priority {
+      padding: 0;
+      margin: 0;
     }
   }
 }

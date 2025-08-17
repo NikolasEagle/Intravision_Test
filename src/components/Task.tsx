@@ -19,6 +19,7 @@ export default function Task({
 }: Props) {
   return (
     <tr className={styles.task}>
+      <td></td>
       <td>{id}</td>
       <td>{name}</td>
       <td>

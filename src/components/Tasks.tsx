@@ -25,6 +25,7 @@ export default function Tasks() {
     "value" in tasks && (
       <table className={styles.tasks}>
         <tr className={styles.header}>
+          <td className={styles.priority}></td>
           <td className={styles.id}>ID</td>
           <td className={styles.name}>Название</td>
           <td className={styles.status}>Статус</td>

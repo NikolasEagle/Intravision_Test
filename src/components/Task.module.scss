@@ -1,6 +1,10 @@
 .task {
+  cursor: pointer;
   border-bottom: 1px solid #eef1f4;
   box-sizing: border-box;
+  &:hover {
+    background: #ecf3f7;
+  }
   td {
     box-sizing: border-box;
     font-size: 12px;

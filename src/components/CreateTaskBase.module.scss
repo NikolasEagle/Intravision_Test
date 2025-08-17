@@ -1,8 +1,11 @@
 .createTaskBase {
+  position: fixed;
   height: 90px;
   width: 100%;
   padding: 25px 0 25px 262px;
   box-sizing: border-box;
+  background: #ffffff;
+  z-index: 2;
   .create {
     cursor: pointer;
     height: 40px;
