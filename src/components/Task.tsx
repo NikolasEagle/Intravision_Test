@@ -1,6 +1,8 @@
 import styles from "./Task.module.scss";
 import Status from "./Status";
 import Priority from "./Priority";
+import { useDispatch } from "react-redux";
+import { OPENED, SELECT } from "../store/slices/editPopupSlice";
 
 interface Props {
   id: number;
@@ -21,8 +23,13 @@ export default function Task({
   priorityId,
   priorities,
 }: Props) {
+  const dispatch = useDispatch();
+  const openCreatePopup = () => {
+    dispatch(OPENED(true));
+    dispatch(SELECT(id));
+  };
   return (
-    <tr className={styles.task}>
+    <tr onClick={openCreatePopup} className={styles.task}>
       <td className={styles.priority}>
         <Priority priorities={priorities} priorityId={priorityId} />
       </td>
