@@ -15,15 +15,13 @@ export default function Menu() {
     <nav className={styles.menu}>
       {chapters.map((chapter) => {
         const copyChapter = { ...chapter };
-        console.log(copyChapter);
         if (copyChapter.path === path) {
           copyChapter.active = true;
         }
         return (
           <Chapter
             icon={copyChapter.icon}
-            width={copyChapter.width}
-            height={copyChapter.height}
+            width={copyChapter.width}            height={copyChapter.height}
             path={copyChapter.path}
             name={copyChapter.name}
             active={copyChapter.active}

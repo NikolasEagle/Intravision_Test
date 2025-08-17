@@ -1,0 +1,13 @@
+.task {
+  border-bottom: 1px solid #eef1f4;
+  box-sizing: border-box;
+  td {
+    box-sizing: border-box;
+    font-size: 12px;
+    padding: 17px 15px;
+    &.executor {
+      text-align: center;
+      text-wrap: nowrap;
+    }
+  }
+}

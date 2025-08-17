@@ -1,11 +1,13 @@
 .base {
   display: flex;
+  position: fixed;
   align-items: center;
   min-width: 100vw;
   width: 100%;
   height: auto;
   background: #d1e0ed;
   padding: 12px 107px 12px 107px;
+  z-index: 2;
 
   .logo {
     position: absolute;
@@ -18,6 +20,6 @@
     left: 26px;
     top: 16px;
     bottom: 5px;
-    z-index: 2;
+    z-index: 5;
   }
 }

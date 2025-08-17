@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { url, tenantguid } from "../configureStore";
+import { url, tenantguid } from "../apiData";
 
 export const getTasks = createAsyncThunk(
   "tasks/getTasks",
