@@ -5,6 +5,7 @@ import SearchBase from "./components/SearchBase";
 import CreatePopup from "./components/CreatePopup";
 import { useEffect } from "react";
 import Main from "./components/Main";
+import EditPopup from "./components/EditPopup";
 
 export default function App() {
   const navigate = useNavigate();
@@ -26,6 +27,7 @@ export default function App() {
             <Menu />
             <Main />
             <CreatePopup />
+            <EditPopup />
           </>
         }
       />

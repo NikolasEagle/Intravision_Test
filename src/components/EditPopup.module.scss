@@ -1,0 +1,35 @@
+.editPopup {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  width: 1138px;
+  height: 100vh;
+  right: 0;
+  top: 67px;
+  z-index: 5;
+  background: #ecf3f7;
+  border-left: solid 1px #d7dce0;
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    background: #1a4876;
+    padding: 0 30px;
+    p {
+      font-size: 13px;
+      color: #ffffff;
+      font-weight: bold;
+    }
+    .close {
+      cursor: pointer;
+      background-position: center;
+      background-image: url(/src/components/close.png);
+      background-size: 16px;
+      background-repeat: no-repeat;
+      width: 16px;
+      height: 16px;
+    }
+  }
+}

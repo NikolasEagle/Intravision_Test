@@ -2,7 +2,7 @@ import styles from "./CreatePopup.module.scss";
 
 export default function CreatePopup() {
   return (
-    <div className={styles.createPopup}>
+    <div style={{ display: "none" }} className={styles.createPopup}>
       <div className={styles.header}>
         <p>Новая заявка</p>
         <div className={styles.close}></div>
