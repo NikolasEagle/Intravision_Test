@@ -1,2 +1,86 @@
 .createPopup {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  width: 1138px;
+  height: 100vh;
+  right: 0;
+  top: 67px;
+  z-index: 5;
+  background: #ecf3f7;
+  border-left: solid 1px #d7dce0;
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    background: #1a4876;
+    padding: 0 30px;
+    p {
+      font-size: 13px;
+      color: #ffffff;
+      font-weight: bold;
+    }
+    .close {
+      cursor: pointer;
+      background-position: center;
+      background-image: url(/src/components/close.png);
+      background-size: 16px;
+      background-repeat: no-repeat;
+      width: 16px;
+      height: 16px;
+    }
+  }
+  .main {
+    padding: 55px 36px;
+    color: #a9a9b2;
+    font-size: 10px;
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 74px;
+      width: 623px;
+      .fields {
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+        div {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+          textarea {
+            border: solid 1px #e8e8e8;
+            border-radius: 6px;
+            resize: none;
+            padding: 12px;
+            font-size: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+            outline: none;
+          }
+        }
+        .name {
+          height: 83px;
+        }
+        .desc {
+          height: 132px;
+        }
+      }
+      .save {
+        button {
+          cursor: pointer;
+          height: 35px;
+          width: 150px;
+          border-radius: calc(40px / 2);
+          background: #008cf0;
+          outline: none;
+          border: none;
+          color: #ffffff;
+          &:hover {
+            background: #3796f8;
+          }
+        }
+      }
+    }
+  }
 }

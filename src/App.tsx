@@ -2,6 +2,7 @@ import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import "./App.module.scss";
 import Menu from "./components/Menu";
 import SearchBase from "./components/SearchBase";
+import CreatePopup from "./components/CreatePopup";
 import { useEffect } from "react";
 import Main from "./components/Main";
 
@@ -24,6 +25,7 @@ export default function App() {
             <SearchBase />
             <Menu />
             <Main />
+            <CreatePopup />
           </>
         }
       />
