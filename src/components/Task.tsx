@@ -1,25 +1,31 @@
-import { useEffect } from "react";
 import styles from "./Task.module.scss";
 import Status from "./Status";
+import Priority from "./Priority";
 
 interface Props {
   id: number;
   name: string;
-  statusId: number;
   executorName: string;
-  statuses: { rgb: string; id: string; name: string }[];
+  statusId: number;
+  statuses: { rgb: string; id: number; name: string }[];
+  priorityId: number;
+  priorities: { rgb: string; id: number; name: string }[];
 }
 
 export default function Task({
   id,
   name,
-  statusId,
   executorName,
+  statusId,
   statuses,
+  priorityId,
+  priorities,
 }: Props) {
   return (
     <tr className={styles.task}>
-      <td></td>
+      <td className={styles.priority}>
+        <Priority priorities={priorities} priorityId={priorityId} />
+      </td>
       <td>{id}</td>
       <td>{name}</td>
       <td>

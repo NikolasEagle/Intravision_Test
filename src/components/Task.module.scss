@@ -8,10 +8,14 @@
   td {
     box-sizing: border-box;
     font-size: 12px;
-    padding: 17px 15px;
+    padding: 6px 15px;
+    height: 33px;
     &.executor {
       text-align: center;
       text-wrap: nowrap;
+    }
+    &.priority {
+      padding: 2px 3px;
     }
   }
 }

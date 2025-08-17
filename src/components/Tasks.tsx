@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getTasks } from "../store/slices/tasksSlice";
 import { getStatuses } from "../store/slices/statusesSlice";
 import Task from "./Task";
+import { getPriorities } from "../store/slices/prioritiesSlice";
 
 export default function Tasks() {
   const dispatch = useDispatch();
@@ -16,9 +17,14 @@ export default function Tasks() {
     (state) => state.statuses
   );
 
+  const { loadingPriorities, priorities, errorPriorities } = useSelector(
+    (state) => state.priorities
+  );
+
   useEffect(() => {
-    dispatch(getTasks());
     dispatch(getStatuses());
+    dispatch(getPriorities());
+    dispatch(getTasks());
   }, [dispatch]);
 
   return (
@@ -35,9 +41,11 @@ export default function Tasks() {
           <Task
             id={task.id}
             name={task.name}
-            statusId={task.statusId}
             executorName={task.executorName}
+            statusId={task.statusId}
             statuses={statuses}
+            priorityId={task.priorityId}
+            priorities={priorities}
           />
         ))}
       </table>
