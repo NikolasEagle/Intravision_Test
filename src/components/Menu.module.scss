@@ -9,4 +9,17 @@
   background: #002137;
   z-index: 2;
   padding: 82px 0 0 0;
+  .logo {
+    position: fixed;
+    background-position: center;
+    background-image: url(/src/components/logo.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 52px;
+    height: 44px;
+    left: 26px;
+    top: 16px;
+    bottom: 5px;
+    z-index: 3;
+  }
 }

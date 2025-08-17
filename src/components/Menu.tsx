@@ -13,6 +13,7 @@ export default function Menu() {
 
   return (
     <nav className={styles.menu}>
+      <div className={styles.logo}></div>
       {chapters.map((chapter) => {
         const copyChapter = { ...chapter };
         if (copyChapter.path === path) {
@@ -21,7 +22,8 @@ export default function Menu() {
         return (
           <Chapter
             icon={copyChapter.icon}
-            width={copyChapter.width}            height={copyChapter.height}
+            width={copyChapter.width}
+            height={copyChapter.height}
             path={copyChapter.path}
             name={copyChapter.name}
             active={copyChapter.active}
