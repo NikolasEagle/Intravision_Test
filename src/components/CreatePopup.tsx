@@ -1,11 +1,25 @@
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./CreatePopup.module.scss";
+import { OPENED } from "../store/slices/createPopupSlice";
 
 export default function CreatePopup() {
+  const dispatch = useDispatch();
+
+  const opened = useSelector((state) => {
+    return state.createPopup ? state.createPopup.opened : false;
+  });
+
+  const closeCreatePopup = () => {
+    dispatch(OPENED(false));
+  };
   return (
-    <div style={{ display: "none" }} className={styles.createPopup}>
+    <div
+      style={opened ? { display: "flex" } : { display: "none" }}
+      className={styles.createPopup}
+    >
       <div className={styles.header}>
         <p>Новая заявка</p>
-        <div className={styles.close}></div>
+        <div onClick={closeCreatePopup} className={styles.close}></div>
       </div>
       <div className={styles.main}>
         <form>
