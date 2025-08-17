@@ -22,15 +22,15 @@ export default function Tasks() {
   }, [dispatch]);
 
   return (
-    <table className={styles.tasks}>
-      <tr className={styles.header}>
-        <td className={styles.id}>ID</td>
-        <td className={styles.name}>Название</td>
-        <td className={styles.status}>Статус</td>
-        <td className={styles.executor}>Исполнитель</td>
-      </tr>
-      {"value" in tasks &&
-        tasks.value.map((task) => (
+    "value" in tasks && (
+      <table className={styles.tasks}>
+        <tr className={styles.header}>
+          <td className={styles.id}>ID</td>
+          <td className={styles.name}>Название</td>
+          <td className={styles.status}>Статус</td>
+          <td className={styles.executor}>Исполнитель</td>
+        </tr>
+        {tasks.value.map((task) => (
           <Task
             id={task.id}
             name={task.name}
@@ -39,6 +39,7 @@ export default function Tasks() {
             statuses={statuses}
           />
         ))}
-    </table>
+      </table>
+    )
   );
 }

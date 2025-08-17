@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import styles from "./Task.module.scss";
+import Status from "./Status";
 
 interface Props {
   id: number;
@@ -16,21 +17,12 @@ export default function Task({
   executorName,
   statuses,
 }: Props) {
-  useEffect(() => {
-    console.log(statuses);
-  }, [statuses]);
   return (
     <tr className={styles.task}>
       <td>{id}</td>
       <td>{name}</td>
       <td>
-        {
-          statuses.map((status) => {
-            if (status.id === statusId) {
-              return status;
-            }
-          })[0]
-        }
+        <Status statuses={statuses} statusId={statusId} />
       </td>
       <td className={styles.executor}>{executorName}</td>
     </tr>
