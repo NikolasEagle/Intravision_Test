@@ -5,6 +5,7 @@ import { getTasks } from "../store/slices/tasksSlice";
 import { getStatuses } from "../store/slices/statusesSlice";
 import Task from "./Task";
 import { getPriorities } from "../store/slices/prioritiesSlice";
+import { getUsers } from "../store/slices/usersSlice";
 
 export default function Tasks() {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ export default function Tasks() {
     dispatch(getStatuses());
     dispatch(getPriorities());
     dispatch(getTasks());
+    dispatch(getUsers());
   }, [dispatch]);
 
   return (
