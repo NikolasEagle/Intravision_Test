@@ -38,6 +38,22 @@ export const postTasks = createAsyncThunk(
   }
 );
 
+export const putTasks = createAsyncThunk(
+  "tasks/putTasks",
+  async (data, thunkAPI) => {
+    try {
+      const response = await axios.put(`${url}/api/${tenantguid}/Tasks`, data, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 const tasksSlice = createSlice({
   name: "tasks",
   initialState: {
@@ -70,6 +86,17 @@ const tasksSlice = createSlice({
         state.selectedId = action.payload;
       })
       .addCase(postTasks.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(putTasks.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(putTasks.fulfilled, (state, action) => {
+        state.loading = false;
+      })
+      .addCase(putTasks.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });
