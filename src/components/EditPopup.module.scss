@@ -81,8 +81,24 @@
               }
             }
             .add_comments {
+              display: flex;
+              flex-direction: column;
+              gap: 12px;
               p {
                 color: #9f9ea7;
+                cursor: pointer;
+                &:hover {
+                  text-decoration: underline;
+                }
+              }
+              textarea {
+                border: solid 1px #e8e8e8;
+                border-radius: 6px;
+                resize: none;
+                padding: 12px;
+                font-size: 10px;
+                font-family: Arial, Helvetica, sans-serif;
+                outline: none;
               }
             }
           }
