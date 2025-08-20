@@ -2,7 +2,8 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./EditPopup.module.scss";
 import { OPENED } from "../store/slices/editPopupSlice";
 import { useEffect, useState } from "react";
-import { getTasks } from "../store/slices/tasksSlice";
+import { getTask, getTasks, putTasks } from "../store/slices/tasksSlice";
+import { store } from "../store/configureStore";
 
 export default function EditPopup() {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ export default function EditPopup() {
     return state.editPopup.selectId;
   });
 
-  const { tasks } = useSelector((state) => state.tasks);
+  const { selectedTask, tasks } = useSelector((state) => state.tasks);
 
   const statuses = useSelector((state) =>
     state.statuses ? state.statuses.statuses : []
@@ -48,7 +49,6 @@ export default function EditPopup() {
 
   const changeStatus = (e) => {
     setStatus(e.target.value);
-    console.log(statuses);
     setStatusColor({
       background: statuses.filter((status) => status.name === e.target.value)[0]
         .rgb,
@@ -63,7 +63,24 @@ export default function EditPopup() {
     setActiveAddComment(!activeAddComment);
   };
 
-  const editInfo = () => {};
+  const editInfo = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const commentTextArea = event.target.querySelector("textarea");
+
+    const comment = commentTextArea?.value;
+
+    const body = JSON.stringify({
+      id: selectId,
+      comment: comment ? comment : "",
+      statusId: getData(selectId, "statusId"),
+      executorId: getData(selectId, "executorId"),
+    });
+    event.target.querySelector("textarea").value = "";
+    setActiveAddComment(false);
+    await store.dispatch(putTasks(body));
+    await store.dispatch(getTasks());
+  };
 
   useEffect(() => {
     setStatus(getData(selectId, "statusName"));
@@ -72,7 +89,10 @@ export default function EditPopup() {
       background: getData(selectId, "statusRgb"),
     });
     dispatch(getTasks());
-  }, [selectId, tasks]);
+    if (selectId) {
+      dispatch(getTask(selectId));
+    }
+  }, [selectId, selectedTask, tasks]);
 
   return (
     <form onSubmit={editInfo}>
@@ -107,22 +127,19 @@ export default function EditPopup() {
                   <button type="submit">Сохранить</button>
                 </div>
               </div>
-              {getData(selectId, "comment") && (
-                <div className={styles.comment}>
-                  <div className={styles.avatar}></div>
-                  <div className={styles.comment_info}>
-                    <p className={styles.comment_name}>
-                      {getData(selectId, "initiatorName")}
-                    </p>
-                    <p
-                      className={styles.comment_date}
-                    >{`${new Date().toDateString()}`}</p>
-                    <div className={styles.comment_content}>
-                      <p>{getData(selectId, "comment")}</p>
+              {selectedTask.lifetimeItems.length > 0 &&
+                selectedTask.lifetimeItems.map((comment) => (
+                  <div className={styles.comment}>
+                    <div className={styles.avatar}></div>
+                    <div className={styles.comment_info}>
+                      <p className={styles.comment_name}>{comment.userName}</p>
+                      <p className={styles.comment_date}>{comment.createdAt}</p>
+                      <div className={styles.comment_content}>
+                        <p>{comment.comment}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              )}
+                ))}
             </div>
           </div>
           <div className={styles.main_right}>

@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./CreatePopup.module.scss";
 import { OPENED } from "../store/slices/createPopupSlice";
 import { OPENED as OPENEDEDIT, SELECT } from "../store/slices/editPopupSlice";
-import { getTasks, postTasks } from "../store/slices/tasksSlice";
+import { getTask, getTasks, postTasks } from "../store/slices/tasksSlice";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { store } from "../store/configureStore";
@@ -50,6 +50,7 @@ export default function CreatePopup() {
     const response = await store.dispatch(postTasks(body));
     dispatch(OPENED(false));
     await store.dispatch(SELECT(response.payload));
+    await store.dispatch(getTask(response.payload));
     dispatch(OPENEDEDIT(true));
   };
 

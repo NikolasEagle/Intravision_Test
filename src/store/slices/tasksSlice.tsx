@@ -18,6 +18,18 @@ export const getTasks = createAsyncThunk(
   }
 );
 
+export const getTask = createAsyncThunk(
+  "tasks/getTask",
+  async (id, thunkAPI) => {
+    try {
+      const response = await axios.get(`${url}/api/${tenantguid}/Tasks/${id}`);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const postTasks = createAsyncThunk(
   "tasks/postTasks",
   async (data, thunkAPI) => {
@@ -47,7 +59,6 @@ export const putTasks = createAsyncThunk(
           "Content-Type": "application/json",
         },
       });
-      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -59,6 +70,7 @@ const tasksSlice = createSlice({
   initialState: {
     loading: false,
     selectedId: null,
+    selectedTask: {},
     tasks: {},
     error: null,
   },
@@ -74,6 +86,18 @@ const tasksSlice = createSlice({
         state.tasks = action.payload;
       })
       .addCase(getTasks.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(getTask.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(getTask.fulfilled, (state, action) => {
+        state.loading = false;
+        state.selectedTask = action.payload;
+      })
+      .addCase(getTask.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       })

@@ -3,6 +3,7 @@ import Status from "./Status";
 import Priority from "./Priority";
 import { useDispatch } from "react-redux";
 import { OPENED, SELECT } from "../store/slices/editPopupSlice";
+import { getTask } from "../store/slices/tasksSlice";
 
 interface Props {
   id: number;
@@ -27,6 +28,7 @@ export default function Task({
   const openCreatePopup = () => {
     dispatch(OPENED(true));
     dispatch(SELECT(id));
+    dispatch(getTask(id));
   };
   return (
     <tr onClick={openCreatePopup} className={styles.task}>
