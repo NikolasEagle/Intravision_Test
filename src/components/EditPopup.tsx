@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./EditPopup.module.scss";
-import { OPENED } from "../store/slices/editPopupSlice";
+import { OPENED, SELECT } from "../store/slices/editPopupSlice";
+import { useEffect } from "react";
 
 export default function EditPopup() {
   const dispatch = useDispatch();
@@ -10,22 +11,22 @@ export default function EditPopup() {
   });
 
   const selectId = useSelector((state) => {
-    return state.editPopup ? state.editPopup.selectId : false;
+    return state.editPopup.selectId;
   });
 
-  const { loadingTasks, tasks, errorTasks } = useSelector(
-    (state) => state.tasks
-  );
+  const { tasks } = useSelector((state) => state.tasks);
 
   const closeEditPopup = () => {
     dispatch(OPENED(false));
   };
 
-  console.log(selectId);
-
   const getData = (selectId: number, data: any): any => {
-    return "value" in tasks && selectId !== null
-      ? tasks.value.filter((task) => selectId === task.id)[0][data]
+    console.log(selectId);
+
+    return "value" in tasks && selectId
+      ? tasks.value.filter((task) => selectId === task.id).length > 0
+        ? tasks.value.filter((task) => selectId === task.id)[0][data]
+        : []
       : "";
   };
 
@@ -87,14 +88,15 @@ export default function EditPopup() {
             </div>
             <div className={styles.priority}>
               <p className={styles.priority_name}>Срок</p>
-              <p>17.08.2025</p>
+              <p>{getData(selectId, "resolutionDatePlan")}</p>
             </div>
             <div className={styles.tags}>
               <p className={styles.tags_name}>Теги</p>
               <div>
-                {getData(selectId, "tags").map((tag) => (
-                  <div className={styles.tag}>{tag.name}</div>
-                ))}
+                {getData(selectId, "tags") &&
+                  getData(selectId, "tags").map((tag) => (
+                    <div className={styles.tag}>{tag.name}</div>
+                  ))}
               </div>
             </div>
           </div>

@@ -1,3 +1,5 @@
+"use client";
+
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { url, tenantguid } from "../apiData";
@@ -16,10 +18,31 @@ export const getTasks = createAsyncThunk(
   }
 );
 
+export const postTasks = createAsyncThunk(
+  "tasks/postTasks",
+  async (data, thunkAPI) => {
+    try {
+      const response = await axios.post(
+        `${url}/api/${tenantguid}/Tasks`,
+        data,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 const tasksSlice = createSlice({
   name: "tasks",
   initialState: {
     loading: false,
+    selectedId: null,
     tasks: {},
     error: null,
   },
@@ -35,6 +58,18 @@ const tasksSlice = createSlice({
         state.tasks = action.payload;
       })
       .addCase(getTasks.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(postTasks.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(postTasks.fulfilled, (state, action) => {
+        state.loading = false;
+        state.selectedId = action.payload;
+      })
+      .addCase(postTasks.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });
